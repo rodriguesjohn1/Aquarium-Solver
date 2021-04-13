@@ -31,7 +31,7 @@ This is equavalent to a 2-d array of
 ]
 ```
 
-There are many possible way to represent the same board, but just make sure that the input is correct and that each tank has a unique number.
+There are many possible ways to represent the same board, but just make sure that the input is correct and that each tank has a unique number.
 
 The two other 1-d lists are for representing the amount of water at each row/column.
 
@@ -41,7 +41,7 @@ After you have the board and top/side numbers, you should be able to run the fil
 
 ### Interpreting the results
 
-After the file runs, you will see some output like:
+After the file runs, you will see an output like:
 
 ```
 Satisfiable: True
