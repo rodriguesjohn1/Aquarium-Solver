@@ -58,3 +58,7 @@ The "Solution" (if there is one) can be interpreted as follows:
 
 * If a number is positive, that coordinate should be filled with water
 * If a number is negative, that coordinate should not be filled with water
+
+### Test in the real world!
+
+Try generating a game from https://www.puzzle-aquarium.com/ and plugging it in to the code! Test the results by adding water to the solution's corresponding coordinates.
