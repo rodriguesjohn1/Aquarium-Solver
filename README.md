@@ -9,7 +9,7 @@ In order to run this file, you'll need to install a python SAT-solver library. W
 
 You can install this by running `pip install python-sat[pblib,aiger]`
 
-### Using the file to solver Aquarium
+### Using the file to solve Aquarium
 At the top of the file, you will see a 2-d array and two 1-d arrays. These are used to represent a game board. The 2-d array is populated by unique aquariums.
 
 For example, take the image below:
