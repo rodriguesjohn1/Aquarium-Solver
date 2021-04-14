@@ -123,7 +123,7 @@ for rindex, row in enumerate(board):
         # print("Done!")
 
 """
-CONSTRAINT 2:
+
 2) The water level in each aquarium is one and the same across its full width.
 
 """
@@ -157,7 +157,9 @@ for rindex, row in enumerate(board):
         seen.add(value)
 
 """
+
 3) The numbers outside the grid show the number of filled cells horizontally and vertically.
+
 """
 
 # HORIZONTAL
