@@ -5,6 +5,12 @@ from mpmath.libmp.backend import xrange
 
 
 class AquariumSolver:
+    """
+    This class is used to generate a solution to a game of Aquarium. It receives input in the form of a board, the list of
+    top numbers, and the list of side numbers. The 2-d board is populated by unique aquariums that a represented with
+    unique integers.
+    """
+
     def __init__(self, board, top_numbers, side_numbers):
         self.board = board
         self.top_numbers = top_numbers
@@ -12,17 +18,20 @@ class AquariumSolver:
         self.sat = Glucose3()
 
     def solve(self):
+        """
+        Return one of the Aquarium game's possible solutions, if it has one.
+        :return: the solution of the game.
+        """
         self.__create_constraints()
         return self.__generate_solution()
 
     def __generate_solution(self):
         print("Satisfiable:", self.sat.solve())
-        solution = self.sat.get_model()
+        solution = self.__to_matrix(self.sat.get_model(), len(self.board[0]))
         print("Solution:")
-        for lst in self.__to_matrix(solution, len(self.board[0])):
+        for lst in solution:
             print(lst)
         return solution
-
 
     def __create_constraints(self):
         self.__add_fill_constraint()
@@ -30,6 +39,10 @@ class AquariumSolver:
         self.__add_horizontal_and_vertical_constraint()
 
     def __add_fill_constraint(self):
+        """
+        CONSTRAINT 1:
+        You have to "fill" the aquariums with water up to a certain level or leave it empty.
+        """
         for rindex, row in enumerate(self.board):
             for cindex, value in enumerate(row):
                 places_below = [self.__index_to_nat(rindex, cindex)]
@@ -53,6 +66,10 @@ class AquariumSolver:
                 # print("Done!")
 
     def __add_width_constraint(self):
+        """
+        CONSTRAINT 2:
+        The water level in each aquarium is one and the same across its full width.
+        """
         for rindex, row in enumerate(self.board):
             seen = set()
             for cindex, value in enumerate(row):
@@ -83,27 +100,27 @@ class AquariumSolver:
                 seen.add(value)
 
     def __add_horizontal_and_vertical_constraint(self):
+        """
+        CONSTRAINT 3:
+        The numbers outside the grid show the number of filled cells horizontally and vertically.
+        """
         self.__add_horizontal_constraint()
         self.__add_vertical_constraint()
 
     def __add_horizontal_constraint(self):
-        # HORIZONTAL
         for rindex, water_for_row in enumerate(self.side_numbers):
             values = []
             for i, v in enumerate(self.board[rindex]):
                 values.append(self.__index_to_nat(rindex, i))
             values = [[str(-v), str(v)] for v in values]
             permutations = ([list(s) for s in itertools.product(*values)])
-            # print(values)
 
             for permutation in permutations:
                 permutation = [int(v) for v in permutation]
                 if not self.__num_positives(permutation, water_for_row):
-                    # print("Adding:", permutation)
                     self.sat.add_clause(self.__negate(permutation))
                 else:
                     pass
-                    # print("Excluding:", permutation)
 
     def __add_vertical_constraint(self):
         for cindex, water_for_row in enumerate(self.top_numbers):
@@ -112,17 +129,13 @@ class AquariumSolver:
                 values.append(self.__index_to_nat(rindex, cindex))
             values = [[str(-v), str(v)] for v in values]
             permutations = ([list(s) for s in itertools.product(*values)])
-            # print(values)
-            # print("water for col:", water_for_row)
 
             for permutation in permutations:
                 permutation = [int(v) for v in permutation]
                 if not self.__num_positives(permutation, water_for_row):
-                    # print("Adding:", permutation)
                     self.sat.add_clause(self.__negate(permutation))
                 else:
                     pass
-                    # print("Excluding:", permutation)
 
     def __negate(self, lst):
         return [-element for element in lst]
@@ -163,21 +176,3 @@ class AquariumSolver:
     # From: https://stackoverflow.com/questions/14681609/create-a-2d-list-out-of-1d-list
     def __to_matrix(self, input_list, n):
         return [input_list[i:i + n] for i in xrange(0, len(input_list), n)]
-
-
-"""
-Constraints:
-
-1) You have to "fill" the aquariums with water up to a certain level or leave it empty.
-
-"""
-
-"""
-CONSTRAINT 2:
-2) The water level in each aquarium is one and the same across its full width.
-
-"""
-
-"""
-3) The numbers outside the grid show the number of filled cells horizontally and vertically.
-"""
