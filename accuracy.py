@@ -6,13 +6,13 @@ from collections import deque
 from aquarium_solver import AquariumSolver
 
 '''
-in order to run this script (more specifically selenium) you must download the chromedriver and insert the path 
+in order to run this script (more specifically selenium) you must download the chromedriver and insert the file path 
 if you do not have it you can download it from here:
 https://chromedriver.chromium.org/downloads
 '''
 
 URL = "https://www.puzzle-aquarium.com/"
-PATH = "D:/Rando/chromedriver_win32/chromedriver.exe"
+PATH = "C:/Users/John/Downloads/chromedriver_win32/chromedriver.exe"
 driver = webdriver.Chrome(PATH)
 driver.get(URL)
 html = driver.page_source
@@ -89,6 +89,26 @@ for row in board:
 solver = AquariumSolver(board, top_numbers, side_numbers)
 solution = solver.solve()
 
+# //*[@id="game"]/div[25]
+# //*[@id="game"]/div[25]/div[2]
+# //*[@id="game"]/div[25]/div[3]
+# //*[@id="game"]/div[25]/div[4]
+# //*[@id="game"]/div[25]/div[5]
+# //*[@id="game"]/div[25]/div[6]
+# //*[@id="game"]/div[25]/div[7]
+# //*[@id="game"]/div[25]/div[8]
+# //*[@id="game"]/div[25]/div[37]
+id = 2
+for row in solution:
+    for num in row:
+        if num > 0:
+            cell = driver.find_element_by_xpath(f"//*[@id=\"game\"]/div[25]/div[{id}]")
+            cell.click()
+        id+=1
+
+# click on 'done' to verify solution
+done = driver.find_element_by_xpath("//*[@id=\"btnReady\"]")
+done.click()
 # print(grid)
 # sleep for 20 seconds to manual verify info is correct before window closes
 time.sleep(40)
