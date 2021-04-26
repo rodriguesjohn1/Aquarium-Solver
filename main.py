@@ -15,7 +15,9 @@ example_side_numbers = [5, 4, 4, 2, 4, 3]
 
 def main():
     solver = AquariumSolver(example_board, example_top_numbers, example_side_numbers)
-    solver.solve()
+    solution, _, _ = solver.solve()
+    for row in solution:
+        print(row)
 
 
 if __name__ == "__main__":
