@@ -17,9 +17,12 @@ class AquariumSolver:
 
     def __generate_solution(self):
         print("Satisfiable:", self.sat.solve())
+        solution = self.sat.get_model()
         print("Solution:")
-        for lst in self.__to_matrix(self.sat.get_model(), len(self.board[0])):
+        for lst in self.__to_matrix(solution, len(self.board[0])):
             print(lst)
+        return solution
+
 
     def __create_constraints(self):
         self.__add_fill_constraint()
