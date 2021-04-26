@@ -101,7 +101,8 @@ for row in solution:
 # click on 'done' to verify solution
 done = driver.find_element_by_xpath("//*[@id=\"btnReady\"]")
 done.click()
+
 # print(grid)
-# sleep for 20 seconds to manual verify info is correct before window closes
-time.sleep(40)
+# sleep to manual verify info is correct before window closes
+time.sleep(5)
 driver.close()
