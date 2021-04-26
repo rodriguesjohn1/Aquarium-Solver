@@ -64,3 +64,12 @@ The "Solution" (if there is one) can be interpreted as follows:
 ### Test in the real world!
 
 Try generating a game from https://www.puzzle-aquarium.com/ and plugging it in to the code! Test the results by adding water to the solution's corresponding coordinates.
+
+### How to test:
+
+Install the chromedriver and insert the filepath:
+https://chromedriver.chromium.org/downloads
+Ex. PATH = "D:/Rando/chromedriver_win32/chromedriver.exe"
+
+Install BeautifulSoup Python library
+`pip install beautifulsoup4
