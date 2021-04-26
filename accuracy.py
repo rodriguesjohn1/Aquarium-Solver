@@ -11,10 +11,6 @@ https://chromedriver.chromium.org/downloads
 '''
 PATH = "D:/Rando/chromedriver_win32/chromedriver.exe"
 
-"""
-
-"""
-
 
 class WebTest:
     """
@@ -22,6 +18,7 @@ class WebTest:
     chromedriver to open the website, scrape the board, generate a solution, enter to solution on the website, and then
     see if the website likes the answer.
     """
+
     def __init__(self, settings):
         """
         This constructor expects an input list of tuples that specifies which board to run and for how many attempts.
