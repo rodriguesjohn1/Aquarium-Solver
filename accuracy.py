@@ -193,6 +193,6 @@ class WebTest:
 
 
 if __name__ == "__main__":
-    settings = [(0, 10), (1, 10), (2, 10)]
+    settings = [(6, 10)]
     accuracy = WebTest(settings)
     accuracy.run()
