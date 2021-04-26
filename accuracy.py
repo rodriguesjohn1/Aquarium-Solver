@@ -89,15 +89,7 @@ for row in board:
 solver = AquariumSolver(board, top_numbers, side_numbers)
 solution = solver.solve()
 
-# //*[@id="game"]/div[25]
-# //*[@id="game"]/div[25]/div[2]
-# //*[@id="game"]/div[25]/div[3]
-# //*[@id="game"]/div[25]/div[4]
-# //*[@id="game"]/div[25]/div[5]
-# //*[@id="game"]/div[25]/div[6]
-# //*[@id="game"]/div[25]/div[7]
-# //*[@id="game"]/div[25]/div[8]
-# //*[@id="game"]/div[25]/div[37]
+# click on cells on website
 id = 2
 for row in solution:
     for num in row:
