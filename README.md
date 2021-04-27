@@ -75,6 +75,6 @@ Ex. PATH = "D:/Rando/chromedriver_win32/chromedriver.exe"
 Install BeautifulSoup Python library
 `pip install beautifulsoup4`
 
-Install Selenium Python librart
+Install Selenium Python library
 `pip install selenium`
 
