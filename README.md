@@ -73,4 +73,4 @@ https://chromedriver.chromium.org/downloads
 Ex. PATH = "D:/Rando/chromedriver_win32/chromedriver.exe"
 
 Install BeautifulSoup Python library
-`pip install beautifulsoup4
+`pip install beautifulsoup4`
