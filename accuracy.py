@@ -174,7 +174,7 @@ class WebTest:
                         stack.append((x + 1, y))
                     if "bl" not in borders and y > 0 and (x, y - 1) not in seen:
                         stack.append((x, y - 1))
-                    if "br" not in borders and y < len(grid) - 1 and (x, y + 1 not in seen):
+                    if "br" not in borders and y < len(grid) - 1 and (x, y + 1) not in seen:
                         stack.append((x, y + 1))
                 for x, y in seen:
                     seen_aquarium.add((x, y))
